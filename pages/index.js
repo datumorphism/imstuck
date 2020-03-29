@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetch from 'isomorphic-unfetch';
+import Link from 'next/link'
 
 function fetcher(url) {
   return fetch(url).then(r => r.json());
@@ -65,6 +66,11 @@ export default function Index() {
         {wf_description && <div className="wf_description">{wf_description}</div>}
       </div>
       <div className="wf">{name}: {description}</div>
+      <div className="link">
+        <Link href="http://datumorphism.com/awesome/workflows/">
+          <a>full workflows</a>
+        </Link>
+      </div>
       <style jsx>{`
         main {
           width: 90%;
@@ -85,6 +91,14 @@ export default function Index() {
           position: absolute;
           top: 1em;
           left: 1em;
+        }
+        .link {
+          font-family: monospace;
+          color: #031704;
+          font-size: 14px;
+          position: absolute;
+          bottom: 1em;
+          right: 1em;
         }
         .workflow {
           font-family: monospace;

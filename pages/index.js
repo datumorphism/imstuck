@@ -11,22 +11,12 @@ const apis = [
   "http://datumorphism.com/api/workflows/eda.json"
 ]
 
-var RandomEntry = async function(data) {
-  console.log(`Show data fetched. Count: ${data.length}`);
+var randomItem = function(workflow) {
+  console.log(`Show data fetched. Count: ${workflow}`);
 
   let item = workflow && workflow[Math.floor(Math.random() * workflow.length)];
-  console.log("item: ", item)
-  const wf_name = item && item?.name
-  const wf_description = item && item?.description
-  console.log("randomentry:", {
-    name: name,
-    description: description,
-    test: "test"
-  })
-  return {
-    name: wf_name,
-    description: wf_description
-  };
+  console.log("randomItem item: ", item)
+  return item
 };
 
 export default function Index() {
@@ -46,8 +36,19 @@ export default function Index() {
   let workflow = data?.workflow;
   console.log("workflow: ", workflow)
 
-  let item = workflow && workflow[Math.floor(Math.random() * workflow.length)];
-  console.log("item: ", item)
+  var all = []
+  function getAll(obj) {
+    all.push(obj)
+    if (obj && obj.steps !== undefined) {
+      obj.steps.forEach(child => getAll(child))
+    }
+  }
+  workflow && workflow.forEach(c => getAll(c))
+  all = all.flat()
+  console.log("all: ", all)
+  // let item = workflow && workflow[Math.floor(Math.random() * workflow.length)];
+  let item = randomItem(all);
+  console.log("item in main: ", item)
   const wf_name = item && item?.name
   const wf_description = item && item?.description
 

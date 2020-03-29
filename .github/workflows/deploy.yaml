@@ -31,6 +31,7 @@ jobs:
       - run: yarn install
       - run: yarn build
       - run: yarn export
+      - run: echo 'imstuck.datumorphism.com' > out/CNAME
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

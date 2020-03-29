@@ -14,18 +14,18 @@ const apis = [
 var RandomEntry = async function(data) {
   console.log(`Show data fetched. Count: ${data.length}`);
 
-  var item = data[Math.floor(Math.random() * data.length)];
+  let item = workflow && workflow[Math.floor(Math.random() * workflow.length)];
   console.log("item: ", item)
-  const name = item?.name
-  const description = item?.description
+  const wf_name = item && item?.name
+  const wf_description = item && item?.description
   console.log("randomentry:", {
     name: name,
     description: description,
     test: "test"
   })
   return {
-    name: name,
-    description: description
+    name: wf_name,
+    description: wf_description
   };
 };
 

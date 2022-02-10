@@ -8,8 +8,8 @@ function fetcher(url) {
 }
 
 const apis = [
-  "http://datumorphism.com/api/workflows/data-quality-and-summary.json",
-  "http://datumorphism.com/api/workflows/eda.json"
+  "http://datumorphism.leima.is/api/workflows/data-quality-and-summary.json",
+  "http://datumorphism.leima.is/api/workflows/eda.json"
 ]
 
 var randomItem = function(workflow) {
@@ -67,7 +67,7 @@ export default function Index() {
       </div>
       <div className="wf">{name}: {description}</div>
       <div className="link">
-        <Link href="http://datumorphism.com/awesome/workflows/">
+        <Link href="http://datumorphism.leima.is/awesome/workflows/">
           <a>full workflows</a>
         </Link>
       </div>
